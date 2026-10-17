@@ -43,8 +43,8 @@ public class ServicioVentas(IReVenta repositorio)
 
     public Ventas Crear(CreateVenta request)
     {
-        decimal totalCalculado = request.Cantidad * request.Precio;
-        Ventas nueva = new(request.NombreCliente, request.NombreProducto, request.Cantidad, request.Precio, request.MetodoPago, totalCalculado);
+        decimal totalCalculado = (request.Cantidad ?? 0) * (request.Precio ?? 0);
+        Ventas nueva = new(request.NombreCliente, request.NombreProducto, request.Cantidad ?? 0, request.Precio ?? 0, request.MetodoPago, totalCalculado);
         repositorio.Agregar(nueva);
         return nueva;
     }
@@ -61,8 +61,10 @@ public class ServicioVentas(IReVenta repositorio)
             return null;
         }
 
-        venta.CambiarCantidad(request.Cantidad);
-        venta.CambiarPrecio(request.Precio);
+        venta.CambiarNombreCliente(request.NombreCliente);
+        venta.CambiarNombreProducto(request.NombreProducto);
+        venta.CambiarCantidad(request.Cantidad ?? 0);
+        venta.CambiarPrecio(request.Precio ?? 0);
         venta.CambiarMetodoPago(request.MetodoPago);
         venta.RecalcularTotal();
         return venta;

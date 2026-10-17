@@ -42,7 +42,7 @@ public class ServicioProveedores(IReProveedor repositorio)
         }
 
         repositorio.EliminarPorNombre(nombreProveedor);
-        Proovedor actualizado = new(nombreProveedor, request.TelefonoProveedor, request.DireccionProveedor);
+        Proovedor actualizado = new(request.NombreProveedor, request.TelefonoProveedor, request.DireccionProveedor);
         repositorio.Agregar(actualizado);
         return actualizado;
     }

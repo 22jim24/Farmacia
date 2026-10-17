@@ -20,6 +20,16 @@ public class Ventas
         MetodoPago = metodoPago;
         Total = total;
     }
+
+    public void CambiarNombreCliente(string nombre)
+    {
+        NombreCliente = nombre;
+    }
+
+    public void CambiarNombreProducto(string nombre)
+    {
+        NombreProducto = nombre;
+    }
     public void CambiarMetodoPago(string metodo)
     {
         if (metodo != "EFECTIVO" && metodo != "TARJETA" && metodo != "YAPE_PLIN" && metodo != "TRANSFERENCIA")
