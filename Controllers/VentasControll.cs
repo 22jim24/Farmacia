@@ -25,6 +25,12 @@ public class VentasController(ServicioVentas servicio) : ControllerBase
         return Ok(venta);
     }
     
+    [HttpGet("metodo-pago/{metodo}")]
+    public ActionResult<List<Ventas>> ListarPorMetodoPago(string metodo)
+    {
+        return Ok(servicio.ListarPorMetodoPago(metodo));
+    }
+
     [HttpPost]
     public ActionResult<Ventas> Crear(CreateVenta request)
     {
@@ -47,12 +53,7 @@ public class VentasController(ServicioVentas servicio) : ControllerBase
     [HttpDelete("{NombreCliente}")]
     public IActionResult Eliminar(string NombreCliente)
     {
-        bool eliminado = servicio.Eliminar(NombreCliente);
-        if (eliminado == false)
-        {
-            return NotFound($"No existe una venta con nombre de cliente {NombreCliente}");
-        }
-
-        return Ok($"Venta eliminada correctamente.");
+        servicio.Eliminar(NombreCliente);
+        return Ok("Venta eliminada correctamente.");
     }
 }

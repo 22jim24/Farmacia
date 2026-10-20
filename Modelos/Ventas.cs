@@ -9,6 +9,8 @@ public class Ventas
     public string MetodoPago { get; private set; }    
     public decimal Total { get; private set; }
 
+    public DateTime FechaVenta { get; } = DateTime.Now;
+
 
     public Ventas(string nombreCliente, string nombreProducto, int cantidad, decimal precio,
     string metodoPago, decimal total)
@@ -54,6 +56,7 @@ public class Ventas
         }
         Precio = nuevoPrecio;
     }
+
     public void RecalcularTotal()
     {
         Total = Cantidad * Precio;

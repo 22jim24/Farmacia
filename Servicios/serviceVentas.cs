@@ -1,6 +1,7 @@
 using Farmaco.Dtos;
 using Farmaco.Modelos;
 using Farmaco.Repositorios;
+using Farmaco.Excepciones;
 
 namespace Farmaco.Servicios;
 
@@ -11,9 +12,10 @@ public class ServicioVentas(IReVenta repositorio)
         return repositorio.ListarTodos();
     }
 
-    public Ventas? BuscarPorCliente(string nombreCliente)
+    public Ventas BuscarPorCliente(string nombreCliente)
     {
-        return repositorio.BuscarPorCliente(nombreCliente);
+        Ventas? venta = repositorio.BuscarPorCliente(nombreCliente) ?? throw new RecursoNoEncontradoException($"No existe una venta del cliente {nombreCliente}");
+        return venta;
     }
 
     public List<Ventas> ListarPorMetodoPago(string metodoPago)
@@ -43,6 +45,11 @@ public class ServicioVentas(IReVenta repositorio)
 
     public Ventas Crear(CreateVenta request)
     {
+        if (repositorio.BuscarPorCliente(request.NombreCliente) != null)
+        {
+            throw new ConflictoException($"Ya existe una venta del cliente {request.NombreCliente}");
+        }
+
         decimal totalCalculado = (request.Cantidad ?? 0) * (request.Precio ?? 0);
         Ventas nueva = new(request.NombreCliente, request.NombreProducto, request.Cantidad ?? 0, request.Precio ?? 0, request.MetodoPago, totalCalculado);
         repositorio.Agregar(nueva);
@@ -53,14 +60,9 @@ public class ServicioVentas(IReVenta repositorio)
     {
         return repositorio.BuscarPorCliente(nombreCliente) != null;
     }
-    public Ventas? Actualizar(string nombreCliente, UpdateVenta request)
+    public Ventas Actualizar(string nombreCliente, UpdateVenta request)
     {
-        Ventas? venta = repositorio.BuscarPorCliente(nombreCliente);
-        if (venta == null)
-        {
-            return null;
-        }
-
+        Ventas venta = BuscarPorCliente(nombreCliente);
         venta.CambiarNombreCliente(request.NombreCliente);
         venta.CambiarNombreProducto(request.NombreProducto);
         venta.CambiarCantidad(request.Cantidad ?? 0);
@@ -70,8 +72,12 @@ public class ServicioVentas(IReVenta repositorio)
         return venta;
     }
 
-    public bool Eliminar(string NombreCliente)
-    {   
-        return repositorio.EliminarPorCliente(NombreCliente);
+    public void Eliminar(string NombreCliente)
+    {
+        bool eliminado = repositorio.EliminarPorCliente(NombreCliente);
+        if (eliminado == false)
+        {
+            throw new RecursoNoEncontradoException($"No existe una venta con nombre de cliente {NombreCliente}");
+        }
     }
 }

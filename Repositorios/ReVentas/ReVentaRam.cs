@@ -37,4 +37,13 @@ public class ReVentaRam : IReVenta
         ventas.Remove(venta);
         return true;
     }
+
+    public void Actualizar(Ventas venta)
+    {
+        int indice = ventas.FindIndex(v => v.NombreCliente == venta.NombreCliente);
+        if (indice != -1)
+        {
+            ventas[indice] = venta;
+        }
+    }
 }

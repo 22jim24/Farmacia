@@ -6,6 +6,7 @@ namespace Farmaco.Repositorios;
 public interface IReVenta
 {
     void Agregar(Ventas venta);
+    void Actualizar(Ventas venta);
     Ventas? BuscarPorCliente(string nombreCliente);
     List<Ventas> ListarTodos();
     bool EliminarPorCliente(string nombreCliente);

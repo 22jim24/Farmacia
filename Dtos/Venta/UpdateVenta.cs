@@ -5,15 +5,15 @@ namespace Farmaco.Dtos;
 public class UpdateVenta
 {
     [Required(ErrorMessage = "El nombre del cliente es obligatorio")]
-    [StringLength(100, MinimumLength = 3, ErrorMessage = "El nombre del cliente debe tener entre 3 y 100 caracteres")]
+    [StringLength(100, MinimumLength = 3, ErrorMessage = "Debe tener entre 3 y 100 caracteres")]
     public string NombreCliente { get; set; } = "";
 
     [Required(ErrorMessage = "El nombre del producto es obligatorio")]
-    [StringLength(100, MinimumLength = 3, ErrorMessage = "El nombre del producto debe tener entre 3 y 100 caracteres")]
-    public string NombreProducto { get; private set; } = "";
+    [StringLength(50, MinimumLength = 5, ErrorMessage = "El nombre del producto debe tener entre 5 y 50  caracteres")]
+    public string NombreProducto { get; set; } = "";
 
     [Required(ErrorMessage = "La cantidad es obligatoria")]
-    [Range(1, 1000, ErrorMessage = "La cantidad debe ser al menos 1")]
+    [Range(1, 1000, ErrorMessage = "La cantidad debe ser al mens 1")]
     public int? Cantidad { get; set; }
 
     [Required(ErrorMessage = "El precio es obligatorio")]
@@ -21,7 +21,9 @@ public class UpdateVenta
     public decimal? Precio { get; set; }
     
     [Required(ErrorMessage = "El método de pago es obligatorio")]   
-    
+    [RegularExpression("^(EFECTIVO|TARJETA|YAPE_PLIN|TRANSFERENCIA)$", ErrorMessage = "Método de pago no válido")]
     public string MetodoPago { get; set; } = "";
+
+    public DateTime? FechaVenta { get; }
     
 }
