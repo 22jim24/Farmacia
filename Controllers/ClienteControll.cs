@@ -25,17 +25,18 @@ public class ClienteController(ServicioCliente servicio) : ControllerBase
         }
         return Ok(cliente);
     }
+
+    [HttpGet("frecuentes")]
+    public ActionResult<List<Cliente>> ListarClientesFrecuentes()
+    {
+        return Ok(servicio.ListarClientesFrecuentes());
+    }
     
     [HttpPost]
     public ActionResult<Cliente> Crear(CreateCliente request)
     {
-        if (servicio.ExisteDni(request.Dni))
-        {
-            return Conflict($"Ya existe un cliente con DNI {request.Dni}");
-        }
-
         Cliente nuevo = servicio.Crear(request);
-        return Created($"/api/clientes/{nuevo.Dni}", nuevo);
+        return Created($"/api/cliente/{nuevo.Dni}", nuevo);
     }
 
     [HttpPut("{dni}")]
@@ -53,17 +54,7 @@ public class ClienteController(ServicioCliente servicio) : ControllerBase
     [HttpDelete("{dni}")]
     public IActionResult Eliminar(string dni)
     {
-        if (servicio.ExisteDni(dni) == false)
-        {
-            return NotFound($"No existe un cliente con DNI {dni}");
-        }
-
-        bool eliminado = servicio.Eliminar(dni);
-        if (eliminado == false)
-        {
-            return NotFound($"No existe un cliente con DNI {dni}");
-        }
-
-        return NoContent();
+        servicio.Eliminar(dni);
+        return Ok("Cliente eliminado correctamente.");
     }
 }

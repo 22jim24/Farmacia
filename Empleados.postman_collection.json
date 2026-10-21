@@ -1,0 +1,243 @@
+{
+  "info": {
+    "_postman_id": "55c25a63-1a70-46f4-ba37-eeb1a5074ca9",
+    "name": "Empleados",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56433073",
+    "_collection_link": "https://go.postman.co/collection/56433073-55c25a63-1a70-46f4-ba37-eeb1a5074ca9?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AllEmp",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/Empleados",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Empleados"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "XDni",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/Empleados/76549871",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Empleados",
+            "76549871"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "xcargo",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/Empleados/cargo/FARMACEUTICO",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Empleados",
+            "cargo",
+            "FARMACEUTICO"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"dni\": \"74859612\",\r\n  \"nombre\": \"Diego\",\r\n  \"apellido\": \"Ramírez\",\r\n  \"correo\": \"diego.ramirez@farmaco.com\",\r\n  \"telefono\": \"955667788\",\r\n  \"cargo\": \"CAJERO\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Empleados",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Empleados"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Diego Alejandro\",\r\n  \"apellido\": \"Ramírez Soto\",\r\n  \"correo\": \"diego.soto@farmaco.com\",\r\n  \"telefono\": \"999888777\",\r\n  \"cargo\": \"ALMACENERO\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Empleados/74859612",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Empleados",
+            "74859612"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Kill",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Empleados/74859612",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Empleados",
+            "74859612"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "errodnio",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/Empleados/000000",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Empleados",
+            "000000"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "errorduplicado",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "  {        \r\n        \"dni\": \"73216549\",\r\n        \"nombre\": \"Jorge\",\r\n        \"apellido\": \"Vargas\",\r\n        \"correo\": \"jorge@farmaco.com\",\r\n        \"telefono\": \"987555666\",\r\n        \"cargo\": \"CAJERO\"\r\n    }",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Empleados",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Empleados"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "erroruopate",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Carlos\",\r\n  \"apellido\": \"Mendoza\",\r\n  \"correo\": \"carlos@farmaco.com\",\r\n  \"telefono\": \"987654321\",\r\n  \"cargo\": \"CONTADOR\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Empleados/45123698",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Empleados",
+            "45123698"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

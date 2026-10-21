@@ -1,0 +1,236 @@
+{
+  "info": {
+    "_postman_id": "9bb1140e-ec4d-43a4-afdc-52161426fa38",
+    "name": "Producto",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56433073",
+    "_collection_link": "https://go.postman.co/collection/56433073-9bb1140e-ec4d-43a4-afdc-52161426fa38?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AllPro",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Producto",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Producto"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "XPro",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "text"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Producto/Paracetamol",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Producto",
+            "Paracetamol"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Cloroformo\",\r\n  \"precio\": 2.50,\r\n  \"stock\": 10\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Producto",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Producto"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Cloroformo\",\r\n  \"precio\": 3.50,\r\n  \"stock\": 9\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Producto/Cloroformo",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Producto",
+            "Cloroformo"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "kill",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5119/api/Producto/Cloroformo",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5119",
+          "path": [
+            "api",
+            "Producto",
+            "Cloroformo"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "erroget",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/Producto/aspirina",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Producto",
+            "aspirina"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "errorcreate",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Ab\",\r\n  \"precio\": -5,\r\n  \"stock\": 250\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Producto",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Producto"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EERROUPDATE3",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombre\": \"Naproxeno 500mg\",\r\n  \"precio\": 5.00,\r\n  \"stock\": 30\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Producto/Naproxeno",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Producto",
+            "Naproxeno"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

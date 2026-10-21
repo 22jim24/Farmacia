@@ -1,19 +1,22 @@
 using Farmaco.Dtos;
 using Farmaco.Modelos;
 using Farmaco.Repositorios;
+using Farmaco.Excepciones;
 
 namespace Farmaco.Servicios;
 
 public class ServicioCliente(IReCliente repositorio)
 {
-public List<Cliente> ListarTodos()
+    public List<Cliente> ListarTodos()
     {
         return repositorio.ListarTodos();
     }
 
-    public Cliente? BuscarPorDni(string dni)
+    public Cliente BuscarPorDni(string dni)
     {
-        return repositorio.BuscarPorDni(dni);
+        Cliente? cliente = repositorio.BuscarPorDni(dni) 
+            ?? throw new RecursoNoEncontradoException($"No existe un cliente con DNI {dni}");
+        return cliente;
     }
 
     public List<Cliente> ListarClientesFrecuentes()
@@ -43,18 +46,19 @@ public List<Cliente> ListarTodos()
 
     public Cliente Crear(CreateCliente request)
     {
+        if (repositorio.BuscarPorDni(request.Dni) != null)
+        {
+            throw new ConflictoException($"Ya existe un cliente con DNI {request.Dni}");
+        }
+
         Cliente nuevo = new(request.Dni, request.Nombre, request.Apellido, request.Correo, request.Telefono, request.PuntosConseguidos ?? 0);
         repositorio.Agregar(nuevo);
         return nuevo;
     }
 
-    public Cliente? Actualizar(string dni, UpdateCliente request)
+    public Cliente Actualizar(string dni, UpdateCliente request)
     {
-        Cliente? cliente = repositorio.BuscarPorDni(dni);
-        if (cliente == null)
-        {
-            return null;
-        }
+        Cliente cliente = BuscarPorDni(dni);
         cliente.Nombre = request.Nombre;
         cliente.Apellido = request.Apellido;
         cliente.Correo = request.Correo;
@@ -63,8 +67,12 @@ public List<Cliente> ListarTodos()
         return cliente;
     }
 
-    public bool Eliminar(string dni)
+    public void Eliminar(string dni)
     {
-        return repositorio.EliminarPorDni(dni);
+        bool eliminado = repositorio.EliminarPorDni(dni);
+        if (eliminado == false)
+        {
+            throw new RecursoNoEncontradoException($"No existe un cliente con DNI {dni}");
+        }
     }
 }

@@ -1,0 +1,293 @@
+{
+  "info": {
+    "_postman_id": "06d4ca6f-350f-4259-a089-19788562d819",
+    "name": "Ventassss",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56433073",
+    "_collection_link": "https://go.postman.co/collection/56433073-06d4ca6f-350f-4259-a089-19788562d819?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Vnetas",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/ventas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ventas x name",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/ventas/Ana Torres",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas",
+            "Ana Torres"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Ventas x metodo de pago",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/ventas/metodo-pago/YAPE_PLIN",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas",
+            "metodo-pago",
+            "YAPE_PLIN"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Crea venta",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreCliente\": \"Cristiano Ronaldo\",\r\n  \"nombreProducto\": \"Vitamina C 1000mg\",\r\n  \"cantidad\": 3,\r\n  \"precio\": 12.50,\r\n  \"metodoPago\": \"YAPE_PLIN\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/ventas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Actualiza venta",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreCliente\": \"Messi Ronaldo\",\r\n  \"nombreProducto\": \"Cloro formo c\",\r\n  \"cantidad\": 5,\r\n  \"precio\": 4.00,\r\n  \"metodoPago\": \"TARJETA\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/ventas/Cristiano Ronaldo",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas",
+            "Cristiano Ronaldo"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "elimina venta",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/ventas/Messi Ronaldo",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas",
+            "Messi Ronaldo"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cliente Inexistente",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/ventas/Jimmy Narazas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas",
+            "Jimmy Narazas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ya at registrado+",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreCliente\": \"Ana Torres\",\r\n  \"nombreProducto\": \"Paracetamol 500mg\",\r\n  \"cantidad\": 1,\r\n  \"precio\": 2.50,\r\n  \"metodoPago\": \"EFECTIVO\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/ventas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Invalido Metodo de pago",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreCliente\": \"Lucía Méndez\",\r\n  \"nombreProducto\": \"Ibuprofeno 400mg\",\r\n  \"cantidad\": 2,\r\n  \"precio\": 3.00,\r\n  \"metodoPago\": \"BITCOIN\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/ventas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cntidad negativa",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"cantidad\": -5,\r\n  \"precio\": 2.50,\r\n  \"metodoPago\": \"EFECTIVO\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/ventas/Ana Torres",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas",
+            "Ana Torres"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "no exite",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/ventas/Juan Perez",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "ventas",
+            "Juan Perez"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

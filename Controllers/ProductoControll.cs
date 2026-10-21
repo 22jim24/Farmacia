@@ -48,17 +48,7 @@ public class ProductoController(ServicioProductos servicio) : ControllerBase
     [HttpDelete("{nombre}")]
     public IActionResult Eliminar(string nombre)
     {
-        if (servicio.ExisteProducto(nombre) == false)
-        {
-            return NotFound($"No existe un producto con nombre {nombre}");
-        }
-
-        bool eliminado = servicio.Eliminar(nombre);
-        if (eliminado == false)
-        {
-            return NotFound($"No se pudo eliminar el producto con nombre {nombre}");
-        }
-
-        return NoContent();
+        servicio.Eliminar(nombre);
+        return Ok("Producto eliminado correctamente.");
     }
 }

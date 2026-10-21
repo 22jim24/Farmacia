@@ -4,7 +4,7 @@ namespace Farmaco.Dtos;
 public class CreateProducto
 {
     [Required (ErrorMessage = "El nombre es obligatorio")]
-    [StringLength(100, MinimumLength = 3, ErrorMessage = "El nombre debe tener entre 3 y 100 caracteres")]
+    [StringLength(59, MinimumLength = 3, ErrorMessage = "El nombre debe tener entre 3 y 59 caracteres")]
     public string Nombre { get; set; } = "";
 
     [Required (ErrorMessage = "El precio es obligatorio")]

@@ -3,7 +3,6 @@ using Farmaco.Dtos;
 using Farmaco.Modelos;
 using Farmaco.Servicios;
 
-
 namespace Farmaco.Controllers;
 
 [ApiController]
@@ -27,19 +26,15 @@ public class EmpleadosController(ServicioEmpleados servicio) : ControllerBase
         return Ok(empleado);
     }
 
+    [HttpGet("cargo/{cargo}")]
+    public ActionResult<List<Empleado>> ListarPorCargo(string cargo)
+    {
+        return Ok(servicio.ListarPorCargo(cargo));
+    }
+
     [HttpPost]
     public ActionResult<Empleado> Crear(CreateEmpleado request)
     {
-        if (servicio.ExisteDni(request.Dni))
-        {
-            return Conflict($"Ya existe un empleado con DNI {request.Dni}");
-        }
-
-        if (servicio.CargoEsValido(request.Cargo)== false)
-        {
-            return BadRequest($"El cargo {request.Cargo} no es válido");
-        }
-
         Empleado nuevo = servicio.Crear(request);
         return Created($"/api/empleados/{nuevo.Dni}", nuevo);
     }
@@ -47,11 +42,6 @@ public class EmpleadosController(ServicioEmpleados servicio) : ControllerBase
     [HttpPut("{dni}")]
     public ActionResult<Empleado> Actualizar(string dni, UpdateEmpleado request)
     {
-        if (servicio.CargoEsValido(request.Cargo)== false)
-        {
-            return BadRequest($"El cargo {request.Cargo} no es válido");
-        }
-
         Empleado? actualizado = servicio.Actualizar(dni, request);
         if (actualizado == null)
         {
@@ -64,17 +54,7 @@ public class EmpleadosController(ServicioEmpleados servicio) : ControllerBase
     [HttpDelete("{dni}")]
     public IActionResult Eliminar(string dni)
     {
-        if (servicio.ExisteDni(dni) == false)
-        {
-            return NotFound($"No existe un empleado con DNI {dni}");
-        }
-
-        bool eliminado = servicio.Eliminar(dni);
-        if (eliminado == false)
-        {
-            return NotFound($"No se pudo eliminar el empleado con DNI {dni}");
-        }
-
-        return NoContent();
+        servicio.Eliminar(dni);
+        return Ok("Empleado eliminado correctamente.");
     }
 }

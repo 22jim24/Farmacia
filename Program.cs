@@ -26,6 +26,15 @@ builder.Services.AddControllers()
 builder.Services.AddOpenApi();
 
 // Inyección de dependencias
+builder.Services.AddSingleton<IReCliente, ReClienteRam>();
+builder.Services.AddScoped<ServicioCliente>();
+
+builder.Services.AddSingleton<IReEmpleado, ReEmpleadoRam>();
+builder.Services.AddScoped<ServicioEmpleados>();
+
+builder.Services.AddSingleton<IReProducto, ReProductoRam>();
+builder.Services.AddScoped<ServicioProductos>();
+
 builder.Services.AddSingleton<IReProveedor, ReProveedorRam>();
 builder.Services.AddScoped<ServicioProveedores>();
 

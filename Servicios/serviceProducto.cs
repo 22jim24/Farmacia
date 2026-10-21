@@ -1,6 +1,7 @@
 using Farmaco.Dtos;
 using Farmaco.Modelos;
 using Farmaco.Repositorios;
+using Farmaco.Excepciones;
 
 namespace Farmaco.Servicios;
 
@@ -11,9 +12,11 @@ public class ServicioProductos(IReProducto repositorio)
         return repositorio.ListarTodos();
     }
 
-    public Producto? BuscarPorNombre(string nombre)
+    public Producto BuscarPorNombre(string nombre)
     {
-        return repositorio.BuscarPorNombre(nombre);
+        Producto? producto = repositorio.BuscarPorNombre(nombre) 
+            ?? throw new RecursoNoEncontradoException($"No existe un producto con nombre {nombre}");
+        return producto;
     }
 
     public List<Producto> ListarStockBajo()
@@ -43,26 +46,31 @@ public class ServicioProductos(IReProducto repositorio)
 
     public Producto Crear(CreateProducto request)
     {
+        if (repositorio.BuscarPorNombre(request.Nombre) != null)
+        {
+            throw new ConflictoException($"Ya existe un producto con nombre {request.Nombre}");
+        }
+
         Producto nuevo = new(request.Nombre, request.Precio ?? 0, request.Stock ?? 0);
         repositorio.Agregar(nuevo);
         return nuevo;
     }
 
-    public Producto? Actualizar(string nombre, UpdateProducto request)
+    public Producto Actualizar(string nombre, UpdateProducto request)
     {
-        Producto? producto = repositorio.BuscarPorNombre(nombre);
-        if (producto == null)
-        {
-            return null;
-        }
+        Producto producto = BuscarPorNombre(nombre);
         producto.ActualizarNombre(request.Nombre);
         producto.ActualizarPrecio(request.Precio ?? 0);
         producto.ActualizarStock(request.Stock ?? 0);
         return producto;
     }
 
-    public bool Eliminar(string nombre)
+    public void Eliminar(string nombre)
     {
-        return repositorio.EliminarPorNombre(nombre);
+        bool eliminado = repositorio.EliminarPorNombre(nombre);
+        if (eliminado == false)
+        {
+            throw new RecursoNoEncontradoException($"No existe un producto con nombre {nombre}");
+        }
     }
 }

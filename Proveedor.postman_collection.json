@@ -1,0 +1,243 @@
+{
+  "info": {
+    "_postman_id": "03edb9f1-8e41-4088-8953-9766ec68879c",
+    "name": "Proveedor",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "56433073",
+    "_collection_link": "https://go.postman.co/collection/56433073-03edb9f1-8e41-4088-8953-9766ec68879c?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "AllProv",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/Proveedores",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Proveedores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "XProv",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/Proveedores/Laboratorios Portugal",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Proveedores",
+            "Laboratorios Portugal"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreProveedor\": \"Distribuidora FarmaSur\",\r\n  \"telefonoProveedor\": \"987654321\",\r\n  \"direccionProveedor\": \"Av. Los Héroes 450, Lima\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Proveedores",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Proveedores"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Upgrade",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreProveedor\": \"Abc\",\r\n  \"telefonoProveedor\": \"912345678\",\r\n  \"direccionProveedor\": \"Av. Salvador Allende 1200, Lima\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Proveedores/Distribuidora FarmaSur",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Proveedores",
+            "Distribuidora FarmaSur"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete}",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/Proveedores/Abc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Proveedores",
+            "Abc"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "errollama",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5124/api/Proveedores/Bayer",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Proveedores",
+            "Bayer"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "failcreate",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreProveedor\": \"Medifarma\",\r\n  \"telefonoProveedor\": \"944556677\",\r\n  \"direccionProveedor\": \"Av. Javier Prado Este 1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Proveedores/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Proveedores",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "failcreate",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreProveedor\": \"Ab\",\r\n  \"telefonoProveedor\": \"12345678A\",\r\n  \"direccionProveedor\": \"Calle 1\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Proveedores/",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Proveedores",
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "EROR DE PUT",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"nombreProveedor\": \"Proveedor Fantasma\",\r\n  \"telefonoProveedor\": \"91122LÑ\",\r\n  \"direccionProveedor\": \"Av. Principal 4567\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:5124/api/Proveedores/ProveedorFantasma",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "5124",
+          "path": [
+            "api",
+            "Proveedores",
+            "ProveedorFantasma"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
